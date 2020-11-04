@@ -2,8 +2,8 @@ class LoginPage {
 
     constructor() {
         this.usernameInput = '#txtUsername';
-        this.passwordInput = 'txtPassword';
-        this.loginButton = 'btnLogin';
+        this.passwordInput = '#txtPassword';
+        this.loginButton = '#btnLogin';
     }
 
     login = (username, password) => {
@@ -12,3 +12,5 @@ class LoginPage {
         cy.get(this.loginButton).click();
     }
 }
+
+export default new LoginPage();
