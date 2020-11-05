@@ -22,6 +22,8 @@ describe('Test cases', () => {
         var username = "Admin";
         var password = "admin123";
         LoginPage.login(username, password);
+        cy.get('#welcome').contains('Welcome');
+        cy.get('#welcome').should('have.text', 'Welcome Paul');
     })
 
 
