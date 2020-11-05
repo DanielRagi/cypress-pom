@@ -1,5 +1,6 @@
 import LoginPage from './PageObjects/Login';
 import DashboardPage from './PageObjects/Dashboard';
+import AddEmployeePage from './PageObjects/AddEmployee';
 
 describe('Test cases', () => {
 
@@ -34,6 +35,7 @@ describe('Test cases', () => {
 
     it('Add Employee', () => {
         DashboardPage.goToAddEmployee();
+        AddEmployeePage.createEmployee('asd', 'dfg');
     })
 
 
