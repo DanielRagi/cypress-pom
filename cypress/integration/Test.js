@@ -2,9 +2,12 @@ import LoginPage from './PageObjects/Login';
 import DashboardPage from './PageObjects/Dashboard';
 import AddEmployeePage from './PageObjects/AddEmployee';
 import EmployeeDetailsPage from './PageObjects/EmployeeDetails';
+import EmployeeListPage from './PageObjects/EmployeeList';
+import EmployeeDetails from './PageObjects/EmployeeDetails';
 
 describe('Test cases', () => {
 
+    var name, lastname, employeeId;
     before( () => {
         cy.clearCookies();
         cy.visit('https://opensource-demo.orangehrmlive.com');
@@ -32,8 +35,8 @@ describe('Test cases', () => {
 
     it('Add Employee', () => {
         DashboardPage.goToAddEmployee();
-        var name = Math.random().toString(36).substring(7);
-        var lastname = Math.random().toString(36).substring(7);
+        name = Math.random().toString(36).substring(7);
+        lastname = Math.random().toString(36).substring(7);
         AddEmployeePage.createEmployee(name, lastname);
     })
 
@@ -47,7 +50,19 @@ describe('Test cases', () => {
     })
 
     it('Search Employee', () => {
+        employeeId = AddEmployeePage.getEmployeeId();
+        EmployeeDetailsPage.employeeListClick();
+        EmployeeListPage.searchEmployee(employeeId);
+        EmployeeListPage.validateEmployeeId(employeeId);
+        EmployeeListPage.validateEmployeeName(name);
+        EmployeeListPage.validateEmployeeLastname(lastname);
+        EmployeeListPage.goToDetails();
+    })
 
+    it('Check values', () => {
+        EmployeeDetailsPage.validateEmployeeId(employeeId);
+        EmployeeDetailsPage.validateEmployeeName(name);
+        EmployeeDetailsPage.validateEmployeeLastname(lastname);
     })
 
 })

@@ -15,6 +15,10 @@ class AddEmployeePage {
         })
         cy.get(this.saveButton).click();
     }
+
+    getEmployeeId = () => {
+        return this.employeeId;
+    }
 }
 
 export default new AddEmployeePage();
