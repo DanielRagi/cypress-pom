@@ -1,7 +1,6 @@
 class DashboardPage {
 
     constructor() {
-        this.pimButton = '#menu_pim_viewPimModule';
         this.addButton = '#menu_pim_addEmployee';
         this.menuButton = '#menu_pim_viewPimModule';
     }

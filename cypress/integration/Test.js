@@ -6,14 +6,12 @@ import EmployeeDetailsPage from './PageObjects/EmployeeDetails';
 describe('Test cases', () => {
 
     before( () => {
-        Cypress.Cookies.debug(true);
         cy.clearCookies();
         cy.visit('https://opensource-demo.orangehrmlive.com');
-
     })
 
-    after( () => {
-
+    after( () => { 
+        //
     })
 
     beforeEach( () => {
@@ -21,7 +19,7 @@ describe('Test cases', () => {
     })
 
     afterEach( () => {
-
+        //
     })
 
     it('Login', () => {
@@ -37,7 +35,19 @@ describe('Test cases', () => {
         var name = Math.random().toString(36).substring(7);
         var lastname = Math.random().toString(36).substring(7);
         AddEmployeePage.createEmployee(name, lastname);
-        EmployeeDetailsPage.editEmployee('F', 'Colombian', 'jakalaka', 'Single', '1997-11-16');
+    })
+
+    it('Edit Employee', () => {
+        var gender = 'M';
+        var nationality = 'Colombian';
+        var nick = Math.random().toString(36).substring(7);
+        var marital = 'Single';
+        var birth = '1997-11-16';
+        EmployeeDetailsPage.editEmployee(gender, nationality, nick, marital, birth);
+    })
+
+    it('Search Employee', () => {
+
     })
 
 })

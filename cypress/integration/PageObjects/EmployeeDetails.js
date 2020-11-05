@@ -18,6 +18,7 @@ class EmployeeDetailsPage {
         cy.get(this.maritalSelect).select(marital);
         cy.get(this.nicknameInput).type(nickname);
         cy.get(this.birthInput).type(birth);
+        cy.get(this.saveButton).click();
     }
 }
 
