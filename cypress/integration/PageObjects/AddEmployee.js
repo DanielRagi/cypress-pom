@@ -10,11 +10,10 @@ class AddEmployeePage {
     createEmployee = (name, lastname) => {
         cy.get(this.nameInput).type(name);
         cy.get(this.lastnameInput).type(lastname);
-        //cy.get(this.saveButton).click();
-
         cy.get(this.idInput).then(($input) => {
             this.employeeId = $input.val();
         })
+        cy.get(this.saveButton).click();
     }
 }
 
