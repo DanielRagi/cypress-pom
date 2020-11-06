@@ -9,24 +9,32 @@ class EmployeeListPage {
         this.lastnameResult = '.odd > :nth-child(4) > a';
     }
 
-    searchEmployee = (id) => {
+    setId = (id) => {
         cy.get(this.employeeIdInput).type(id);
+    }
+
+    clickSearch = () => {
         cy.get(this.searchButton).click();
     }
 
-    validateEmployeeId = (id) => {
+    searchEmployee = (id) => {
+        this.setId(id);
+        this.clickSearch();
+    }
+
+    assertEmployeeId = (id) => {
         cy.get(this.idResult).should(($result) => {
             expect($result.text()).to.equal(id);
           })
     }
 
-    validateEmployeeName = (name) => {
+    assertEmployeeName = (name) => {
         cy.get(this.nameResult).should(($result) => {
             expect($result.text()).to.equal(name);
           })
     }
 
-    validateEmployeeLastname = (lastname) => {
+    assertEmployeeLastname = (lastname) => {
         cy.get(this.lastnameResult).should(($result) => {
             expect($result.text()).to.equal(lastname);
           })

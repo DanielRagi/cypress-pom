@@ -14,49 +14,73 @@ class EmployeeDetailsPage {
         this.employeListButton = '#menu_pim_viewEmployeeList';
     }
 
-    editEmployee = (gender, nationality, nickname, marital, birth) => {
+    clickButton = () => {
         cy.get(this.saveButton).click();
+    }
+
+    setGender = (gender) => {
         (gender == 'M') ? cy.get(this.maleOption).check() : cy.get(this.femaleOption).check();
+    }
+
+    setNationality = (nationality) => {
         cy.get(this.nationalitySelect).select(nationality);
+    }
+
+    setMaritalStatus = (marital) => {
         cy.get(this.maritalSelect).select(marital);
+    }
+
+    setNickname = (nickname) => {
         cy.get(this.nicknameInput).type(nickname);
+    }
+
+    setBirth = (birth) => {
         cy.get(this.birthInput).type(birth);
-        cy.get(this.saveButton).click();
+    }
+
+    editEmployee = (gender, nationality, nickname, marital, birth) => {
+        this.clickButton();
+        this.setGender(gender);
+        this.setNationality(nationality);
+        this.setMaritalStatus(marital);
+        this.setNickname(nickname);
+        this.setBirth(birth);
+        this.clickButton();
     }
 
     employeeListClick = () => {
         cy.get(this.employeListButton).click({ force: true });
     }
 
-    validateEmployeeId = (id) => {
+    assertEmployeeId = (id) => {
         cy.get(this.idInput).should('have.value', id);
     }
 
-    validateEmployeeName = (name) => {
+    assertEmployeeName = (name) => {
         cy.get(this.nameInput).should('have.value', name);
     }
 
-    validateEmployeeLastname = (lastname) => {
+    assertEmployeeLastname = (lastname) => {
         cy.get(this.lastnameInput).should('have.value', lastname);
     }
 
-    validateEmployeeMarital = (marital) => {
+    assertEmployeeMarital = (marital) => {
         cy.get(this.maritalSelect).should('have.value', marital);
     }
 
-    validateEmployeeNationality = (nationality) => {
+    assertEmployeeNationality = (nationality) => {
         cy.get(this.nationalitySelect).should('have.value', nationality);
     }
 
-    validateEmployeeBirth = (birth) => {
+    assertEmployeeBirth = (birth) => {
         cy.get(this.birthInput).should('have.value', birth);
     }
 
-    validateEmployeeNick = (nick) => {
+    assertEmployeeNick = (nick) => {
         cy.get(this.nicknameInput).should('have.value', nick);
     }
 
-    validateEmployeeGender = (gender) => {
+    assertEmployeeGender = (gender) => {
         (gender == 'M') ? cy.get(this.maleOption).should('be.checked') : cy.get(this.femaleOption).should('be.checked');
     }
 }

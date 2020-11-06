@@ -34,7 +34,7 @@ describe('Test cases', () => {
         var username = "Admin";
         var password = "admin123";
         LoginPage.login(username, password);
-        cy.get('#welcome').should('to.exist');
+        DashboardPage.validateLogin();
     })
 
     // Navega hacia la sección de añadir empleado y le asigna nombre y apellido generado aleatoriamente.
@@ -62,23 +62,23 @@ describe('Test cases', () => {
         employeeId = AddEmployeePage.getEmployeeId();
         EmployeeDetailsPage.employeeListClick();
         EmployeeListPage.searchEmployee(employeeId);
-        EmployeeListPage.validateEmployeeId(employeeId);
-        EmployeeListPage.validateEmployeeName(name);
-        EmployeeListPage.validateEmployeeLastname(lastname);
+        EmployeeListPage.assertEmployeeId(employeeId);
+        EmployeeListPage.assertEmployeeName(name);
+        EmployeeListPage.assertEmployeeLastname(lastname);
         EmployeeListPage.goToDetails();
     })
 
     // Verifica que la información correspondiente al empleado coincida con la ingresada al momento de
     // registrarlo y editarlo.
     it('Check values', () => {
-        EmployeeDetailsPage.validateEmployeeId(employeeId);
-        EmployeeDetailsPage.validateEmployeeName(name);
-        EmployeeDetailsPage.validateEmployeeLastname(lastname);
-        EmployeeDetailsPage.validateEmployeeBirth(birth);
-        EmployeeDetailsPage.validateEmployeeNationality(41);
-        EmployeeDetailsPage.validateEmployeeMarital(marital);
-        EmployeeDetailsPage.validateEmployeeGender(gender);
-        EmployeeDetailsPage.validateEmployeeNick(nick);
+        EmployeeDetailsPage.assertEmployeeId(employeeId);
+        EmployeeDetailsPage.assertEmployeeName(name);
+        EmployeeDetailsPage.assertEmployeeLastname(lastname);
+        EmployeeDetailsPage.assertEmployeeBirth(birth);
+        EmployeeDetailsPage.assertEmployeeNationality(41);
+        EmployeeDetailsPage.assertEmployeeMarital(marital);
+        EmployeeDetailsPage.assertEmployeeGender(gender);
+        EmployeeDetailsPage.assertEmployeeNick(nick);
     })
 
 })

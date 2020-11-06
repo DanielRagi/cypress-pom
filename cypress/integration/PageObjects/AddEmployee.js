@@ -7,13 +7,29 @@ class AddEmployeePage {
         this.saveButton = '#btnSave';
     }
 
-    createEmployee = (name, lastname) => {
+    setName = (name) => {
         cy.get(this.nameInput).type(name);
+    }
+
+    setLastname = (lastname) => {
         cy.get(this.lastnameInput).type(lastname);
+    }
+
+    saveId = () => {
         cy.get(this.idInput).then(($input) => {
             this.employeeId = $input.val();
         })
+    }
+
+    clickSave = () => {
         cy.get(this.saveButton).click();
+    }
+
+    createEmployee = (name, lastname) => {
+       this.setName(name);
+       this.setLastname(lastname);
+       this.saveId();
+       this.clickSave();
     }
 
     getEmployeeId = () => {
