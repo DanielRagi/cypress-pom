@@ -15,6 +15,7 @@ describe('Test cases', () => {
         marital, 
         birth;
 
+
     // Antes de iniciar la ejecución de los casos de prueba realiza limpieza de cookies (para evitar
     // problemas en nuevas sesiones al re-ejecutarlos) y luego visita el sitio.
     before( () => {
@@ -28,6 +29,7 @@ describe('Test cases', () => {
         Cypress.Cookies.preserveOnce('PHPSESSID', 'Loggedin');
     })
 
+
     // Ingresa al aplicativo con los datos por defecto y verifica que se haya iniciado sesión
     // buscando la existencia del mensaje de bienvenida.
     it('Login', () => {
@@ -38,11 +40,14 @@ describe('Test cases', () => {
     })
 
     // Navega hacia la sección de añadir empleado y le asigna nombre y apellido generado aleatoriamente.
+    // Luego, valida si los datos que aparecen en el registro coinciden con los ingresados.
     it('Add Employee', () => {
         DashboardPage.goToAddEmployee();
         name = Math.random().toString(36).substring(7);
         lastname = Math.random().toString(36).substring(7);
         AddEmployeePage.createEmployee(name, lastname);
+        EmployeeDetailsPage.assertEmployeeName(name);
+        EmployeeDetailsPage.assertEmployeeLastname(lastname);
     })
 
     //  Realiza la edición de la información del empleado para añadir información correspondiente a:
