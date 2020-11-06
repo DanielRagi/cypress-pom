@@ -39,6 +39,26 @@ class EmployeeDetailsPage {
     validateEmployeeLastname = (lastname) => {
         cy.get(this.lastnameInput).should('have.value', lastname);
     }
+
+    validateEmployeeMarital = (marital) => {
+        cy.get(this.maritalSelect).should('have.value', marital);
+    }
+
+    validateEmployeeNationality = (nationality) => {
+        cy.get(this.nationalitySelect).should('have.value', nationality);
+    }
+
+    validateEmployeeBirth = (birth) => {
+        cy.get(this.birthInput).should('have.value', birth);
+    }
+
+    validateEmployeeNick = (nick) => {
+        cy.get(this.nicknameInput).should('have.value', nick);
+    }
+
+    validateEmployeeGender = (gender) => {
+        (gender == 'M') ? cy.get(this.maleOption).should('be.checked') : cy.get(this.femaleOption).should('be.checked');
+    }
 }
 
 export default new EmployeeDetailsPage();
